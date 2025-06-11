@@ -64,39 +64,6 @@ def validate(arr):
             return 0
 
     return 1  # Game continues
-from PIL import Image
-import streamlit as st
-
-# Open the image
-img = Image.open(r"C:\Users\HP\Downloads\quantum-computing-theme-vector.jpg")
-
-# Ensure the image has an alpha channel (RGBA)
-img = img.convert("RGBA")
-
-# Get the image data
-data = img.getdata()
-
-# Create a new list for the modified image data
-new_data = []
-
-# Loop through each pixel and adjust the transparency
-for item in data:
-    # Change all white (also shades of whites) pixels to be transparent
-    # You can adjust the condition below to be more specific if needed
-    if item[0] in range(200, 256) and item[1] in range(200, 256) and item[2] in range(200, 256):
-        new_data.append((item[0], item[1], item[2], 50))  # Adjust the alpha value here (0 is fully transparent, 255 is fully opaque)
-    else:
-        new_data.append(item)
-
-# Update image data with new transparency
-img.putdata(new_data)
-
-# Resize the image
-img_resized = img.resize((500, 300))
-
-# Display the image in Streamlit
-st.image(img_resized)
-
 
 
 # Main function to run the game
